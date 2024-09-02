@@ -1,4 +1,14 @@
+from constants import(
+    block_type_code,
+    block_type_heading,
+    block_type_olist,
+    block_type_paragraph,
+    block_type_quote,
+    block_type_ulist,
+    
+)
 
+#A representation of a HTMLNode with the purpose of rendering itself in HTML
 class HTMLNode:
     def __init__(self, tag = None, value = None, children = None, props = None):
         self.tag = tag
@@ -20,7 +30,7 @@ class HTMLNode:
     def __repr__(self):
         return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
 
-
+#An HTMLNode with a single html tag and no children
 class LeafNode(HTMLNode):
     def __init__(self,tag ,value,props = None): 
         super().__init__(tag, value, None, props)
@@ -35,7 +45,7 @@ class LeafNode(HTMLNode):
     
     def __repr__(self):
         return f"LeafNode({self.tag}, {self.value}, {self.props})"
-    
+# An HTML node that has children and handles the nesting of them.    
 class ParentNode(HTMLNode):
     def __init__(self,tag,children,props = None):
         super().__init__(tag,None,children,props)
